@@ -1,7 +1,8 @@
-baseURL = "/"
+baseURL = "https://nassim-studio.github.io/Temp-blog/"
 title = "Client Blog"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
+canonifyURLs = true
 
 [languages]
   [languages.en]
