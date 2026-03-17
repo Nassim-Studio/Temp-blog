@@ -14,7 +14,7 @@
                 <p class="text-xl text-gray-300 font-light mb-8 font-serif">
                     Delivering strategic clarity in a complex world. Explore our latest thinking on the trends shaping the future of global business.
                 </p>
-                <a href="/posts/" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-bold tracking-wider uppercase text-sm hover:bg-white hover:text-[var(--color-primary)] transition-colors duration-300">
+                <a href="{{ "/posts/" | relLangURL }}" class="inline-flex items-center px-6 py-3 border-2 border-white text-white font-bold tracking-wider uppercase text-sm hover:bg-white hover:text-[var(--color-primary)] transition-colors duration-300">
                     Read Our Latest Research
                     <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
@@ -27,7 +27,7 @@
         
         <div class="flex justify-between items-end border-b-2 border-[var(--color-primary)] pb-4 mb-12">
             <h2 class="text-3xl font-serif font-bold text-[var(--color-primary)]">Latest Insights</h2>
-            <a href="/posts/" class="text-sm font-bold text-[var(--color-accent)] uppercase tracking-wider hover:underline">View All</a>
+            <a href="{{ "/posts/" | relLangURL }}" class="text-sm font-bold text-[var(--color-accent)] uppercase tracking-wider hover:underline">View All</a>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
