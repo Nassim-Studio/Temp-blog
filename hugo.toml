@@ -9,58 +9,11 @@ defaultContentLanguageInSubdir = false
     weight = 1
     languageName = "English"
     title = "Client Blog"
-    [languages.en.params]
-      languageAltTitle = "English"
-    [[languages.en.menu.main]]
-      identifier = "blog"
-      name = "Blog"
-      url = "/posts/"
-      weight = 10
-    [[languages.en.menu.main]]
-      identifier = "about"
-      name = "About Us"
-      url = "/about/"
-      weight = 20
-    [[languages.en.menu.main]]
-      identifier = "partners"
-      name = "Partners"
-      url = "/partners/"
-      weight = 30
-
   [languages.fr]
     contentDir = "content/fr"
     weight = 2
     languageName = "Français"
     title = "Blog Client"
-    [languages.fr.params]
-      languageAltTitle = "Français"
-    [[languages.fr.menu.main]]
-      identifier = "blog"
-      name = "Blog"
-      url = "/posts/"
-      weight = 10
-    [[languages.fr.menu.main]]
-      identifier = "about"
-      name = "À Propos"
-      url = "/about/"
-      weight = 20
-    [[languages.fr.menu.main]]
-      identifier = "partners"
-      name = "Partenaires"
-      url = "/partners/"
-      weight = 30
 
 [build]
   writeStats = true
-theme = "papermod"
-
-[params]
-ShowCodeCopyButtons = true
-  [params.homeInfoParams]
-  Title = "Welcome to the Site"
-  Content = "This is the home page. You can customize this text or remove it completely."
-
-[module]
-  [module.hugoVersion]
-    extended = true
-    min = "0.114.0"
