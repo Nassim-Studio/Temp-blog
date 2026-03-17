@@ -1,0 +1,22 @@
+baseURL = "https://[YOUR_GITHUB_USERNAME].github.io/"
+title = "Client Blog"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+[languages]
+  [languages.en]
+    weight = 1
+    languageName = "English"
+    title = "Client Blog"
+  [languages.fr]
+    weight = 2
+    languageName = "Français"
+    title = "Blog Client"
+
+[build]
+  writeStats = true
+
+[module]
+  [module.hugoVersion]
+    extended = true
+    min = "0.114.0"

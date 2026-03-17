@@ -1,0 +1,23 @@
+<header class="border-b border-border py-4">
+  <div class="container mx-auto px-4 max-w-4xl flex flex-col sm:flex-row justify-between items-center gap-4">
+    
+    <a href="{{ site.Home.RelPermalink }}" class="text-2xl font-bold tracking-tight text-primary hover:text-accent transition-colors">
+      {{ site.Title }}
+    </a>
+
+    <nav class="flex items-center gap-6 text-sm font-medium">
+      <a href="{{ site.Home.RelPermalink }}" class="hover:text-accent transition-colors">Home</a>
+      <a href="{{ "/posts/" | relLangURL }}" class="hover:text-accent transition-colors">Blog</a>
+      <a href="{{ "/partners/" | relLangURL }}" class="hover:text-accent transition-colors">Partners</a>
+      <a href="{{ "/about/" | relLangURL }}" class="hover:text-accent transition-colors">About Us</a>
+      
+      <!-- Language Switcher -->
+      <div class="flex items-center gap-2 ml-4 border-l pl-4 border-border">
+        {{ range .Translations }}
+          <a href="{{ .RelPermalink }}" class="text-muted-foreground hover:text-foreground font-semibold uppercase text-xs">{{ .Language.LanguageName }}</a>
+        {{ end }}
+      </div>
+
+    </nav>
+  </div>
+</header>
