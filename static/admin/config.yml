@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: Nassim-Studio/Temp-blog
+  branch: main
+
+media_folder: "static/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "posts_en"
+    label: "English Posts"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Cover Image", name: "cover", widget: "object", required: false, fields: [
+          {label: "Image", name: "image", widget: "image", required: false},
+          {label: "Alt Text", name: "alt", widget: "string", required: false},
+          {label: "Caption", name: "caption", widget: "string", required: false}
+        ]}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "posts_fr"
+    label: "French Posts"
+    folder: "content/fr/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Draft", name: "draft", widget: "boolean", default: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Categories", name: "categories", widget: "list", required: false}
+      - {label: "Cover Image", name: "cover", widget: "object", required: false, fields: [
+          {label: "Image", name: "image", widget: "image", required: false},
+          {label: "Alt Text", name: "alt", widget: "string", required: false},
+          {label: "Caption", name: "caption", widget: "string", required: false}
+        ]}
+      - {label: "Body", name: "body", widget: "markdown"}
