@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+    
+    <!-- Link the statically compiled Tailwind CSS file -->
+    <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+</head>
+<body class="h-full flex flex-col font-sans text-[var(--color-text-main)] bg-[var(--color-bg-base)] antialiased">
+    
+    {{ partial "header.html" . }}
+
+    <!-- Main Content Area -->
+    <main class="flex-grow">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+</body>
+</html>

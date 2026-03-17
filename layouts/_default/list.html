@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+<!-- Header Banner -->
+<section class="w-full bg-[var(--color-bg-alt)] border-b border-[var(--color-border)] py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
+        <h1 class="text-4xl md:text-5xl font-serif font-bold text-[var(--color-primary)] mb-4 capitalize">
+            {{ .Title }}
+        </h1>
+        <p class="text-lg text-[var(--color-text-muted)] max-w-2xl font-serif">
+            Explore our authoritative insights and analysis on the trends shaping global markets.
+        </p>
+    </div>
+</section>
+
+<!-- Article Grid -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+        
+        {{ range .Paginator.Pages }}
+            <article class="flex flex-col group cursor-pointer border-t border-[var(--color-border)] pt-6">
+                
+                <div class="flex items-center space-x-2 text-xs font-bold text-[var(--color-text-muted)] uppercase tracking-wider mb-4">
+                    <time>{{ .Date.Format "January 2, 2006" }}</time>
+                    {{ if .Params.categories }}
+                        <span>&nbsp;|&nbsp;</span>
+                        <span class="text-[var(--color-accent)]">{{ index .Params.categories 0 }}</span>
+                    {{ end }}
+                </div>
+                
+                <h3 class="text-2xl font-serif font-bold text-[var(--color-primary)] leading-snug mb-3 group-hover:text-[var(--color-accent)] transition-colors duration-200">
+                    <a href="{{ .RelPermalink }}" class="block">{{ .Title }}</a>
+                </h3>
+                
+                <p class="text-[var(--color-text-muted)] text-sm leading-relaxed mb-4 flex-grow">
+                    {{ .Summary | truncate 150 }}
+                </p>
+
+                <div class="mt-auto">
+                    <a href="{{ .RelPermalink }}" class="text-sm font-bold text-[var(--color-accent)] uppercase tracking-wider hover:underline inline-flex items-center">
+                        Read Article
+                        <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+            </article>
+        {{ end }}
+
+    </div>
+
+    <!-- Pagination Support -->
+    {{ template "_internal/pagination.html" . }}
+</section>
+
+{{ end }}

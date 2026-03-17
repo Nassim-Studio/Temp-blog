@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  /* Corporate Color Palette (McKinsey Style) */
+  --color-primary: #051c2c;     /* Deep Navy Blue */
+  --color-primary-light: #092c45;
+  --color-accent: #005fcc;      /* Bright Blue for links/hover */
+  --color-text-main: #111111;   /* Near black for readability */
+  --color-text-muted: #666666;
+  --color-bg-base: #ffffff;
+  --color-bg-alt: #f4f6f8;      /* Soft gray section backgrounds */
+  --color-border: #e2e8f0;
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Georgia', 'Times New Roman', serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg-base);
+    color: var(--color-text-main);
+  }
+}

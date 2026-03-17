@@ -1,0 +1,58 @@
+<!-- layouts/partials/header.html -->
+<header class="w-full bg-[var(--color-primary)] text-white sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            
+            <!-- Logo area -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="{{ "/" | relLangURL }}" class="flex items-center gap-2">
+                    <!-- Placeholder Logo matching the Corporate Vibe -->
+                    <div class="w-8 h-8 bg-white text-[var(--color-primary)] font-serif font-bold text-xl flex items-center justify-center rounded-sm">
+                        {{ substr site.Title 0 1 }}
+                    </div>
+                    <span class="font-serif text-2xl tracking-wide uppercase font-semibold">
+                        {{ site.Title }}
+                    </span>
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                {{ $current := . }}
+                {{ range site.Menus.main }}
+                    <a href="{{ .URL | relLangURL }}" 
+                       class="text-sm font-medium tracking-wider uppercase transition-colors duration-200 
+                              hover:text-[var(--color-accent)] 
+                              {{ if $current.IsMenuCurrent "main" . }}text-[var(--color-accent)] border-b-2 border-[var(--color-accent)] pb-1{{ else }}text-gray-200{{ end }}">
+                        {{ .Name }}
+                    </a>
+                {{ end }}
+                
+                <!-- Simple divider -->
+                <span class="text-gray-600">|</span>
+                
+                <!-- Language Switcher -->
+                <div class="flex space-x-4">
+                    {{ range .AllTranslations }}
+                        {{ if eq .Lang $current.Lang }}
+                            <span class="text-sm font-bold text-white uppercase">{{ .Language.LanguageName }}</span>
+                        {{ else }}
+                            <a href="{{ .RelPermalink }}" class="text-sm text-gray-400 hover:text-white uppercase transition-colors">
+                                {{ .Language.LanguageName }}
+                            </a>
+                        {{ end }}
+                    {{ end }}
+                </div>
+            </nav>
+
+            <!-- Mobile menu button (Functionality can be added later via simple JS) -->
+            <div class="md:hidden flex items-center">
+                <button class="text-gray-300 hover:text-white focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
