@@ -38,6 +38,20 @@ jobs:
         id: pages
         uses: actions/configure-pages@v5
 
+      - name: Setup Node (For Tailwind)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+        env:
+          FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Build CSS
+        run: npm run build
+
       - name: Build with Hugo
         env:
           HUGO_ENVIRONMENT: production

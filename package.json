@@ -209,7 +209,7 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:css": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --watch",
-    "dev:hugo": "hugo server",
+    "dev:hugo": "npx hugo server",
     "build": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --minify"
   },
   "repository": {
