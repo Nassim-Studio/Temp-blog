@@ -15,8 +15,12 @@ defaultContentLanguageInSubdir = false
 
 [build]
   writeStats = true
+theme = "papermod"
 
-[module]
-  [module.hugoVersion]
+[params]
+ShowCodeCopyButtons = true
+  [params.homeInfoParams]
+  Title = "Welcome to the Site"
+  Content = "This is the home page. You can customize this text or remove it completely."  [module.hugoVersion]
     extended = true
     min = "0.114.0"
