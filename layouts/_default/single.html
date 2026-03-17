@@ -37,9 +37,29 @@
                 </div>
             </header>
 
-            <!-- Placeholder for large Editorial Image if needed -->
-            <div class="w-full h-80 md:h-96 bg-gray-100 mb-16 flex items-center justify-center">
-                <span class="text-gray-400 font-serif italic text-lg">Editorial Imagery</span>
+            <!-- Featured Image -->
+            <div class="w-full bg-gray-100 mb-16 overflow-hidden">
+                {{ $image := .Params.cover.image }}
+                {{ if $image }}
+                    {{ $resource := resources.Get (printf "images/uploads/%s" (path.Base $image)) }}
+                    {{ if $resource }}
+                        {{ $optimized := $resource.Resize "1600x webp" }}
+                        <img src="{{ $optimized.RelPermalink }}" alt="{{ .Params.cover.alt | default .Title }}" class="w-full h-auto object-cover">
+                        {{ if .Params.cover.caption }}
+                            <p class="py-3 px-4 text-xs italic text-[var(--color-text-muted)] border-l-2 border-[var(--color-accent)] bg-[var(--color-bg-alt)]">
+                                {{ .Params.cover.caption }}
+                            </p>
+                        {{ end }}
+                    {{ else }}
+                        <div class="w-full h-80 md:h-96 flex items-center justify-center">
+                            <span class="text-gray-400 font-serif italic text-lg">Editorial Insight</span>
+                        </div>
+                    {{ end }}
+                {{ else }}
+                    <div class="w-full h-80 md:h-96 flex items-center justify-center">
+                        <span class="text-gray-400 font-serif italic text-lg">Editorial Insight</span>
+                    </div>
+                {{ end }}
             </div>
 
             <!-- Article Body -->

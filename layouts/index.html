@@ -34,9 +34,22 @@
             <!-- Grab the 6 most recent posts -->
             {{ range first 6 (where site.RegularPages "Type" "posts") }}
                 <article class="flex flex-col group cursor-pointer">
-                    <!-- Placeholder Gray Box for Images until client uploads them -->
+                    <!-- Post Thumbnail -->
                     <div class="w-full h-56 bg-gray-200 mb-6 overflow-hidden relative">
-                        <div class="absolute inset-0 bg-[var(--color-primary)] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                        {{ $image := .Params.cover.image }}
+                        {{ if $image }}
+                            {{ $resource := resources.Get (printf "images/uploads/%s" (path.Base $image)) }}
+                            {{ if $resource }}
+                                {{ $thumb := $resource.Fill "800x600 webp" }}
+                                <img src="{{ $thumb.RelPermalink }}" alt="{{ .Params.cover.alt | default .Title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+                            {{ else }}
+                                <div class="w-full h-full bg-[var(--color-primary)] flex items-center justify-center">
+                                    <span class="text-white/20 font-serif italic">Insight</span>
+                                </div>
+                            {{ end }}
+                        {{ else }}
+                            <div class="absolute inset-0 bg-[var(--color-primary)] opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                        {{ end }}
                     </div>
                     
                     <!-- Meta info (Date / Category) -->

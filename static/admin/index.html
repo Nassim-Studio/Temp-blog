@@ -10,6 +10,32 @@
   <body>
     <!-- Sveltia CMS: A lightweight, GitHub-native alternative to Decap/Netlify CMS -->
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+    <script>
+      CMS.registerEditorComponent({
+        id: "carousel",
+        label: "Image Carousel",
+        fields: [
+          {
+            label: "Images",
+            name: "images",
+            widget: "list",
+            field: { label: "Image", name: "image", widget: "image", media_library: { config: { multiple: true } } }
+          }
+        ],
+        pattern: /^{{< carousel images="([^"]+)" >}}$/,
+        fromBlock: function(match) {
+          return {
+            images: match[1].split(",")
+          };
+        },
+        toBlock: function(obj) {
+          return '{{< carousel images="' + obj.images.join(",") + '" >}}';
+        },
+        toPreview: function(obj) {
+          return '<div style="background: #f3f4f6; padding: 20px; text-align: center; border: 2px dashed #051c2c; font-family: serif;">[ Corporate Image Carousel: ' + obj.images.length + ' Images ]</div>';
+        }
+      });
+    </script>
   </body>
 
 </html>

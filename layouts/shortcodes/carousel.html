@@ -1,0 +1,73 @@
+<div class="carousel-container relative w-full overflow-hidden my-12 group" id="carousel-{{ .Get "id" | default (now.Unix) }}">
+    <div class="carousel-track flex transition-transform duration-500 ease-out h-[500px]">
+        {{ $images := split (.Get "images") "," }}
+        {{ range $images }}
+            {{ $img := . | strings.TrimPrefix "/images/uploads/" | strings.TrimPrefix "images/uploads/" }}
+            {{ $resource := resources.Get (printf "images/uploads/%s" $img) }}
+            <div class="carousel-slide min-w-full h-full flex items-center justify-center bg-gray-100">
+                {{ if $resource }}
+                    {{ $optimized := $resource.Resize "1200x webp" }}
+                    <img src="{{ $optimized.RelPermalink }}" alt="Carousel Image" class="w-full h-full object-cover">
+                {{ else }}
+                    <div class="text-gray-400 font-serif italic text-lg">Image Not Found: {{ . }}</div>
+                {{ end }}
+            </div>
+        {{ end }}
+    </div>
+
+    <!-- Controls -->
+    <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-[var(--color-primary)] p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-30" aria-label="Previous">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </button>
+    <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/50 hover:bg-white text-[var(--color-primary)] p-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-30" aria-label="Next">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </button>
+
+    <!-- Indicators -->
+    <div class="carousel-indicators absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-30">
+        {{ range $index, $element := $images }}
+            <button class="w-2 h-2 rounded-full bg-white/30 hover:bg-white transition-colors" data-slide="{{ $index }}"></button>
+        {{ end }}
+    </div>
+</div>
+
+<script>
+(function() {
+    const container = document.currentScript.parentElement;
+    const track = container.querySelector('.carousel-track');
+    const slides = container.querySelectorAll('.carousel-slide');
+    const prevBtn = container.querySelector('.carousel-prev');
+    const nextBtn = container.querySelector('.carousel-next');
+    const indicators = container.querySelectorAll('.carousel-indicators button');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * 100}%)`;
+        indicators.forEach((btn, idx) => {
+            btn.classList.toggle('bg-white', idx === currentIndex);
+            btn.classList.toggle('bg-white/30', idx !== currentIndex);
+        });
+    }
+
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        updateCarousel();
+    });
+
+    indicators.forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+            currentIndex = idx;
+            updateCarousel();
+        });
+    });
+
+    updateCarousel();
+})();
+</script>
