@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --watch & hugo server",
-    "build": "npx tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --minify"
+    "dev": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --watch & hugo server",
+    "build": "tailwindcss -i ./assets/css/main.css -o ./static/css/style.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.8",
     "postcss-cli": "^11.0.1",
