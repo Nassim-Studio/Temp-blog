@@ -46,5 +46,6 @@
   body {
     background-color: var(--color-bg-base);
     color: var(--color-text-main);
+    line-height: 1.8;
   }
 }
