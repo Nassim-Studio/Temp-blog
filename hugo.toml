@@ -21,6 +21,9 @@ theme = "papermod"
 ShowCodeCopyButtons = true
   [params.homeInfoParams]
   Title = "Welcome to the Site"
-  Content = "This is the home page. You can customize this text or remove it completely."  [module.hugoVersion]
+  Content = "This is the home page. You can customize this text or remove it completely."
+
+[module]
+  [module.hugoVersion]
     extended = true
     min = "0.114.0"
