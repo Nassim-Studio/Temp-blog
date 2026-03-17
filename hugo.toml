@@ -5,10 +5,12 @@ defaultContentLanguageInSubdir = false
 
 [languages]
   [languages.en]
+    contentDir = "content/en"
     weight = 1
     languageName = "English"
     title = "Client Blog"
   [languages.fr]
+    contentDir = "content/fr"
     weight = 2
     languageName = "Français"
     title = "Blog Client"
