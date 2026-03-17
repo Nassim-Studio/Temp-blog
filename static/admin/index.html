@@ -9,6 +9,38 @@
 
   <body>
     <!-- Sveltia CMS: A lightweight, GitHub-native alternative to Decap/Netlify CMS -->
+    <!-- Dynamic CMS Configuration Injection -->
+    <script>
+      (function() {
+        const hostname = window.location.hostname;
+        const pathname = window.location.pathname;
+        const pathParts = pathname.split('/').filter(Boolean);
+        
+        let repo = "Nassim-Studio/Temp-blog"; // Fallback
+        if (hostname.endsWith(".github.io")) {
+          const user = hostname.split(".")[0];
+          if (pathParts.length > 0 && pathParts[0] !== "admin") {
+            repo = `${user}/${pathParts[0]}`;
+          } else {
+            repo = `${user}/${hostname}`;
+          }
+        }
+        
+        // Use hostname as site_id for Netlify Auth, or repo name
+        const siteId = hostname;
+
+        window.CMS_CONFIG = {
+          backend: {
+            name: "github",
+            repo: repo,
+            branch: "main",
+            base_url: "https://api.netlify.com",
+            site_id: siteId
+          }
+        };
+      })();
+    </script>
+
     <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
     <script>
       CMS.registerEditorComponent({
