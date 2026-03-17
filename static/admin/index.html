@@ -26,16 +26,13 @@
           }
         }
         
-        // Use hostname as site_id for Netlify Auth, or repo name
-        const siteId = hostname;
-
         window.CMS_CONFIG = {
           backend: {
             name: "github",
             repo: repo,
             branch: "main",
             base_url: "https://api.netlify.com",
-            site_id: siteId
+            site_id: "nassimstudio-temp-blog.netlify.app"
           }
         };
       })();
