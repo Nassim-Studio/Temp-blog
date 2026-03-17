@@ -9,11 +9,36 @@ defaultContentLanguageInSubdir = false
     weight = 1
     languageName = "English"
     title = "Client Blog"
+    [[languages.en.menu.main]]
+      name = "Insights"
+      url = "/posts/"
+      weight = 10
+    [[languages.en.menu.main]]
+      name = "About Us"
+      url = "/about/"
+      weight = 20
+    [[languages.en.menu.main]]
+      name = "Partners"
+      url = "/partners/"
+      weight = 30
+
   [languages.fr]
     contentDir = "content/fr"
     weight = 2
     languageName = "Français"
     title = "Blog Client"
+    [[languages.fr.menu.main]]
+      name = "Analyses"
+      url = "/posts/"
+      weight = 10
+    [[languages.fr.menu.main]]
+      name = "À Propos"
+      url = "/about/"
+      weight = 20
+    [[languages.fr.menu.main]]
+      name = "Partenaires"
+      url = "/partners/"
+      weight = 30
 
 [build]
   writeStats = true
