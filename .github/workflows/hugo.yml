@@ -47,7 +47,7 @@ jobs:
           FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
       - name: Install Node Dependencies
-        run: npm ci
+        run: npm install
 
       - name: Build CSS
         run: npm run build
