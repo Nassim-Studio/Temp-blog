@@ -20,24 +20,22 @@ This project is configured to deploy automatically to GitHub Pages on every push
 
 ---
 
-## 🔐 CMS Setup (Netlify Authentication)
+## 🔐 CMS Setup (GitHub Authentication)
 
-To enable content editing via the `/admin` dashboard, you must set up an authentication gateway on Netlify.
+To enable content editing via the `/admin` dashboard, you must authenticate using a GitHub Personal Access Token (PAT). Since the site is deployed to GitHub Pages, Sveltia CMS uses direct repository access.
 
-### 1. Create a Netlify Site
-1. Log in to [Netlify](https://app.netlify.com/).
-2. Click **"Add new site"** > **"Import an existing project"**.
-3. Connect to **GitHub** and select this repository (`Temp-blog`).
-4. **Note**: Build settings don't need to succeed; we only need the site identity.
+### Generating a Personal Access Token
+1. Go to your GitHub account settings: **Developer settings** > **Personal access tokens** > **Tokens (classic)**.
+2. Click **Generate new token (classic)**.
+3. Give it a descriptive name (e.g., "Sveltia CMS Auth") and select your preferred expiration.
+4. Under "Select scopes", check the **`repo`** box (this is required to read and save posts).
+5. Click **Generate token** and copy it immediately.
+6. *(Important for Organizations)*: If the repository belongs to an organization that uses SSO, click **Configure SSO** next to your new token and authorize the organization.
 
-### 2. Enable Identity & Git Gateway
-1. Go to **Site Configuration** > **Identity** and click **"Enable Identity"**.
-2. Scroll to **Services** > **Git Gateway** and click **"Enable Git Gateway"**.
-3. Under **Registration preferences**, it is recommended to set it to **"Invite only"**.
-
-### 3. Final Step
-1. Get your Netlify site name (e.g., `nassim-blog-admin.netlify.app`).
-2. Update the `site_id` in `static/admin/index.html` (or provide it to the developer).
+### Logging In
+1. Navigate to your live site's `/admin/` page.
+2. Below the main "Login" button, click the **"Continue with Access Token"** link.
+3. Paste your generated token and click the button to log in.
 
 ---
 
