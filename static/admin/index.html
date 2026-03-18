@@ -5,6 +5,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
+    <style>
+      /* Force a minimum height on the Markdown Rich Text Editor */
+      [data-field-type="markdown"] .wrapper,
+      [data-field-type="markdown"] .sui-editor,
+      [data-field-type="markdown"] .ProseMirror,
+      [data-field-type="markdown"] textarea {
+        min-height: 600px !important;
+      }
+    </style>
   </head>
 
   <body>
