@@ -3,6 +3,8 @@ title = "Client Blog"
 defaultContentLanguage = "en"
 defaultContentLanguageInSubdir = false
 canonifyURLs = true
+buildFuture = true
+timeZone = "Europe/Paris"
 
 [languages]
   [languages.en]
